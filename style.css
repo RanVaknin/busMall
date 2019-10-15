@@ -1,0 +1,46 @@
+body {
+    background-color: rgb(36, 36, 36);
+}
+
+#outsideContainer {
+    background-color: lightskyblue;
+    margin: auto 10%;
+    margin-top: 100px;
+    height:1000px;
+    
+
+}
+
+td {
+    padding: 7px;
+    border-color: rgb(230, 230, 230);
+    border-style: solid;
+    border-width: 1px;
+    text-transform: capitalize;
+    font-size: 12.6px;
+}
+
+footer {
+    background-color: rgb(107, 160, 194);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom:50px;
+
+
+}
+
+#container {
+    position: relative;
+    top:10%;
+    
+}
+img {
+    object-fit: cover;
+    border-style: solid;
+    border-width: 5px;
+    border-color: rgb(112, 172, 210);
+    margin-top:100px;
+}
+img#left {
+    margin-left:80px;
+}
+
