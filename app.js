@@ -9,9 +9,6 @@ var ulEl = document.getElementById('list');
 
 
 var randomArray = [];
-
-var arrayOfItems = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
-
 var allProducts = [];
 var uniqueArray =[];
 
@@ -28,41 +25,20 @@ function makeRandomNew() {
   }
 
 
-
-
-
 function generateNewArray(){
-
     while( randomArray.length < 6){
         var randomNumber = makeRandom();
         if(!randomArray.includes(randomNumber)){
             randomArray.push(randomNumber)
-            console.log(randomArray);
+            // console.log(randomArray);
         }
     }
-
 }
-//     for (let j = 0 ; j < 6 ; j++){
-//         var randomNumber = makeRandom();
-//     if(!randomArray.includes(randomNumber)){
-//         randomArray.push(randomNumber)
-//         console.log(randomArray);
-//     } else {
-//         j--;
-//     }
-//   }
-
-
-// }
-
-
-
 
 function shiftNewArray() {
     generateNewArray();
     for (let i = 0; i < randomArray.length; i++) {
         var temp = randomArray.shift();
-        
     }
     return randomArray;
 }
@@ -85,49 +61,78 @@ function renderProducts() {
     if (leftImageEl.src === rightImageEl.src || leftImageEl.src === centerImageEl.src || rightImageEl.src === centerImageEl.src){
         renderProducts();
     }
-
-
 }
 
 function makeRandom() {
     return Math.floor(Math.random() * allProducts.length);
-  }
+}
 
 
-new Product('banana');
-new Product('usb');
-new Product('baby');
-new Product('glass')
-new Product('shark');
-new Product('bag');
-new Product('unicorn');
-new Product('dragon');
-new Product('bathroom');
-new Product('water');
-new Product('scissors');
-new Product('pen');
-new Product('cthulhu');
-new Product('bubblegum');
-new Product('breakfast');
-new Product('sweep');
-new Product('chair');
-new Product('dog');
-new Product('tauntaun');
+//If local storage exists, make products from local storage
+
+
+//If local storage does NOT exist, make products like normal
+
+if(localStorage.votes){
+
+
+    
+    //Get string from cloud
+    var votesOfStorage = localStorage.votes;
+    var parsedVotesOfStorage = JSON.parse(votesOfStorage)
+    //Parse Products into application
+    for (let i = 0; i < parsedVotesOfStorage.length ; i++){
+        var newProduct = new Product(parsedVotesOfStorage[i].productName)
+        newProduct.views = parsedVotesOfStorage[i].views;
+        newProduct.votes = parsedVotesOfStorage[i].votes;
+
+     
+    }
+
+    console.log('CREATED EXISTING PRODUCT', allProducts)
+
+} else {
+
+    new Product('banana');
+    new Product('usb');
+    new Product('baby');
+    new Product('glass')
+    new Product('shark');
+    new Product('bag');
+    new Product('unicorn');
+    new Product('dragon');
+    new Product('bathroom');
+    new Product('water');
+    new Product('scissors');
+    new Product('pen');
+    new Product('cthulhu');
+    new Product('bubblegum');
+    new Product('breakfast');
+    new Product('sweep');
+    new Product('chair');
+    new Product('dog');
+    new Product('tauntaun');
+
+}
 
 
 
+
+var pulling = localStorage.getItem('vote');
 
 
 Product.selections = 0;
 
 function handleClick() {
     var chosenImage = event.target.title;
-    console.log('chosen image: ' ,chosenImage)
     for (let i=0; i < allProducts.length; i++){
         if (chosenImage === allProducts[i].productName){
             allProducts[i].votes++;
         }
     }
+    var allProductsString = JSON.stringify(allProducts)
+
+    localStorage.setItem('votes', JSON.stringify(allProducts)); 
 
     Product.selections++;
 
@@ -198,6 +203,3 @@ containerEl.addEventListener('click', handleClick);
 
 renderProducts();
 var amountOfTries = 25;
-
-
-
