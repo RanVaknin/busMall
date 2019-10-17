@@ -74,9 +74,6 @@ function makeRandom() {
 //If local storage does NOT exist, make products like normal
 
 if(localStorage.votes){
-
-
-    
     //Get string from cloud
     var votesOfStorage = localStorage.votes;
     var parsedVotesOfStorage = JSON.parse(votesOfStorage)
