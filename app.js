@@ -6,6 +6,7 @@ var rightImageEl = document.getElementById('right');
 var containerEl = document.getElementById('container');
 var tableEl = document.getElementById('table');
 var ulEl = document.getElementById('list');
+//getting ID's of HTML elements and storing them in variables.
 
 
 var randomArray = [];
@@ -19,10 +20,15 @@ function Product(productName){
     this.views = 0;
     this.votes = 0;    
 }
+//constructor functions for products
+
+
 
 function makeRandomNew() {
     return Math.floor(Math.random() * arrayOfItems.length);
-  }
+}
+//creates random number between 0 and the length of arrayOfItems array.
+
 
 
 function generateNewArray(){
@@ -34,6 +40,7 @@ function generateNewArray(){
         }
     }
 }
+//iterates over randomArray 6 times, creates a variable and stores 6 unique random numbers between 1-20 and pushes them into randomArray
 
 function shiftNewArray() {
     generateNewArray();
@@ -42,6 +49,7 @@ function shiftNewArray() {
     }
     return randomArray;
 }
+// creates a function that when called iterates over the length of randomArray and shifts the first item of the array.
 
 function renderProducts() {
     shiftNewArray();
@@ -63,18 +71,16 @@ function renderProducts() {
     }
 }
 
+// staging the pictures on screen based on their index in the randomArray (determined by random number generator) and making sure two pictures wont appear side by side.
+
 function makeRandom() {
     return Math.floor(Math.random() * allProducts.length);
 }
 
 
-//If local storage exists, make products from local storage
 
-
-//If local storage does NOT exist, make products like normal
-
-if(localStorage.votes){
-    //Get string from cloud
+if(localStorage.votes){    //If local storage exists, make products from local storage
+    //Get string from storage
     var votesOfStorage = localStorage.votes;
     var parsedVotesOfStorage = JSON.parse(votesOfStorage)
     //Parse Products into application
@@ -89,7 +95,7 @@ if(localStorage.votes){
     console.log('CREATED EXISTING PRODUCT', allProducts)
 
 } else {
-
+//If local storage does NOT exist, make products like normal
     new Product('banana');
     new Product('usb');
     new Product('baby');
@@ -111,8 +117,6 @@ if(localStorage.votes){
     new Product('tauntaun');
 
 }
-
-
 
 
 var pulling = localStorage.getItem('vote');
