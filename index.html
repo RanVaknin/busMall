@@ -2,23 +2,38 @@
 <html>
 <head>
     <title>Bus Mall</title>
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
 
 </head>
 <body>
 <div id="outsideContainer">
-    <div id="container">
-        <img src="" alt="" id="left" title="" width='300' height="300">
-        <img src="" alt="" id=right title="" width='300' height="300">
-        <img src="" alt="" id="center" title="" width='300' height="300">
+    <div id="logo">
+        <img src="bus.png" alt=""height ="135px">
     </div>
-    <div id="ulContainer">
+    <div id="nav">
+        <ul>
+            <li>• Home</li>
+            <li><a href="sales.html">• Our Proudcts</a></li>
+            <li><a href="contact.html">• Contact Us</a></li>
+        </ul>
+    </div>
+    <!-- <div id="ulContainer">
         <ul id="list"></ul>
+    </div> -->
+    <div id="container2">
+            <p>Welcome to BUSMALL! your one and only magazine to buy amazing products while traveling! Please continue to our products page to see what we have to offer you.</p>
+            <p>Acceptable payments methods are:
+            </p>
+            <img src="payment.png" alt="" height="100px">
     </div>
 
-
-    <footer>
+    <footer id="footer">
             <table id="table"></table>
+            <canvas id="myChart" width="200" height="150"></canvas>
+
     </footer>
 </div>
 
@@ -60,9 +75,12 @@ table.appendChild(trEl);
 </script>
  -->
 
-<script src="app.js"></script>
-   
+
+ 
+ 
+ 
 </body>
+<script src="app.js"></script>
 
 
 
